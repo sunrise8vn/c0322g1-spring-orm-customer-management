@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <style>
+        table {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            border: 1px dotted #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>
+            <a href="/customers/create">
+                <button type="button" class="btn btn-outline-primary">Create</button>
+            </a>
+        </p>
+
+        <div class="row">
+            <form action="/customers/search" method="get">
+                <div>
+                    <input type="text" class="form-control" name="search">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-success">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        There are <span th:text="${customers.size()}"></span> customer(s).
+        <table class="table table-hover">
+            <caption>Customers List</caption>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${customers}">
+                <td th:text="${c.id}"></td>
+                <td>
+                    <a th:href="@{/customers/{id}(id=${c.id})}" th:text="${c.fullName}"></a>
+                </td>
+                <td th:text="${c.email}"></td>
+                <td th:text="${c.phone}"></td>
+                <td th:text="${c.address}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

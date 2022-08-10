@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Information</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form method="post" th:object="${customer}">
+            <fieldset>
+                <legend>Customer Information</legend>
+                <table class="table">
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            <input type="text" class="form-control" th:field="*{fullName}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <input type="text" class="form-control" th:field="*{email}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>
+                            <input type="text" class="form-control" th:field="*{phone}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <input type="text" class="form-control" th:field="*{address}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-outline-primary" value="Create">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        <a href="/customers" class="btn btn-outline-secondary">Back to list</a>
+    </div>
+</body>
+</html>
